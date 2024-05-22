@@ -21,6 +21,7 @@ for server in "${servers[@]}"
 do
     echo "starting for $server..."
     echo "Copying SSH key to $server..."
+    echo "ssh-copy-id -i $ssh_key_path  $username@$server"
     ssh-copy-id -i "$ssh_key_path" "$username@$server"
 done
 
