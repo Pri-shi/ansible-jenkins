@@ -20,5 +20,4 @@
           - bzip2
           - dnf-automatic
         state: present
-      disable_plugin: fastestmirror
       ignore_errors: yes
