@@ -11,8 +11,9 @@ pipeline {
                 script {
                      def ipList = params.IPs.split(',')
                      def ipListPass= params.IPs.split(',')
-
+                    sh '''
                     chmod +x script.sh
+                    '''
                     for (int i = 0; i < ipAddresses.size(); i++) {
                         def ipAddress = ipAddresses[i].trim()
                         withCredentials([usernamePassword(credentialsId: ${ipAddress}, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
