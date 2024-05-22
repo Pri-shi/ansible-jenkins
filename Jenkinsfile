@@ -15,7 +15,7 @@ pipeline {
                     '''
                     for (int i = 0; i < ipList.size(); i++) {
                         def ipAddress = ipList[i].trim()
-                        withCredentials([usernamePassword(credentialsId: '172.17.0.4', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        withCredentials([usernamePassword(credentialsId: ${ipAddress}, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         // script to SSH copy id to the remote server
                         sh """
                         ./script.sh ${USERNAME} ${PASSWORD} '172.17.0.4'
