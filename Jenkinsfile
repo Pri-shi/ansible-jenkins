@@ -14,8 +14,8 @@ pipeline {
                     sh '''
                     chmod +x script.sh
                     '''
-                    for (int i = 0; i < ipAddresses.size(); i++) {
-                        def ipAddress = ipAddresses[i].trim()
+                    for (int i = 0; i < ipList.size(); i++) {
+                        def ipAddress = ipList[i].trim()
                         withCredentials([usernamePassword(credentialsId: ${ipAddress}, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         // script to SSH copy id to the remote server
                         sh """
