@@ -11,7 +11,7 @@ username=$1
 password=$2
 ip=$3
 # ssh_key_path='~/.ssh/id_rsa'
-ssh_key_pub_path='$HOME$/.ssh/id_rsa.pub'
+ssh_key_pub_path='/var/jenkins/.ssh/id_rsa.pub'
 echo $ssh_key_path
 
 echo "STARTING ssh-keygen "
