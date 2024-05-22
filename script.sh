@@ -7,17 +7,18 @@ if [ $# -lt 2 ]; then
 fi
 
 # Set the username and the path to the SSH key on the local machine
-username=$3
+username=$1
 password=$2
-ip=$1
-ssh_key_path='~/.ssh/id_rsa.pub'
+ip=$3
+ssh_key_path='~/.ssh/id_rsa'
+ssh_key_pub_path='~/.ssh/id_rsa.pub'
 echo $ssh_key_path
 
-echo "STARTING ssh-keygen -r $3 "
-ssh-keygen -R $3
+echo "STARTING ssh-keygen "
+ssh-keygen -t rsa -f $ssh_key_path
 echo "keygen COMPLETED"
 
 echo "Copying SSH key to $3..."
-echo "ssh-copy-id -i $ssh_key_path  $2@$1"
-sshpass $2 | ssh-copy-id -i "$ssh_key_path" "$2@$1"
+echo "ssh-copy-id -i $ssh_key_path  $2@$3"
+sshpass $2 | ssh-copy-id -i "$ssh_key_pub_path" "$2@$3"
 
