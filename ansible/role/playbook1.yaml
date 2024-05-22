@@ -23,4 +23,4 @@
         - dnf-automatic
       state: present
       disable_plugin: fastestmirror
-    ignore_errors: yes
+      ignore_errors: yes
