@@ -8,8 +8,8 @@ fi
 
 # Set the username and the path to the SSH key on the local machine
 username=root
-ssh_key_file_name='~/.ssh/id_rsa'+$3
-ssh_key_path='~/.ssh/id_rsa'+$3'.pub'
+ssh_key_file_name='~/.ssh/id_rsa'$3
+ssh_key_path='~/.ssh/id_rsa'$3'.pub'
 echo $ssh_key_path
 
 # Set the list of remote servers using the arguments provided
