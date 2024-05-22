@@ -15,7 +15,7 @@ ssh_key_pub_path='~/.ssh/id_rsa.pub'
 echo $ssh_key_path
 
 echo "STARTING ssh-keygen "
-ssh-keygen -t rsa -f $ssh_key_path
+ssh-keygen -t rsa -f $ssh_key_path -N ''
 echo "keygen COMPLETED"
 
 echo "Copying SSH key to $3..."
