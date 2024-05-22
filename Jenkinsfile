@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Create Inventory') {
             steps {
-                withCredentials([usernamePassword(credentialsId: '172.17.0.3', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                   def ipList = params.IPs.split(',')
+                script {
+                     def ipList = params.IPs.split(',')
 
                         // Join the IP list into a space-separated string to pass as arguments
                         def ipArgs = ipList.join(' ')
