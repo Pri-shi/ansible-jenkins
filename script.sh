@@ -17,11 +17,9 @@ echo $ssh_key_path
 echo "STARTING ssh-keygen "
 ssh-keygen -t rsa -f $ssh_key_path -N ''
 echo "keygen COMPLETED"
-echo "pwd" pwd
-ls ~/.ssh
-cd ~/.ssh
-echo "pwd" pwd
+
 echo "Copying SSH key to $3..."
-echo "echo: ssh-copy-id -i $ssh_key_pub_path  $1@$3"
 sshpass -p $2 ssh-copy-id -i $ssh_key_pub_path $1@$3
+
+echo "COPYING SSHID COMPLETED"
 
