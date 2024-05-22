@@ -16,7 +16,8 @@ servers=("$@")
 # Loop through the servers and copy the SSH key
 for server in "${servers[@]}"
 do
+    echo "starting for $server..."
     echo "Copying SSH key to $server..."
-    ssh-copy-id -i "$ssh_key_path" "$username@$server"
+    ssh-copy-id -R -i "$ssh_key_path" "$username@$server"
 done
 
