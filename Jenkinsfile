@@ -10,15 +10,18 @@ pipeline {
             steps {
                 script {
                      def ipList = params.IPs.split(',')
+                     def ipListPass= params.IPs.split(',')
 
-                        // Join the IP list into a space-separated string to pass as arguments
-                        def ipArgs = ipList.join(' ')
-
-                        // Run the shell script with the IP addresses as input arguments
+                    chmod +x script.sh
+                    for (int i = 0; i < ipAddresses.size(); i++) {
+                        def ipAddress = ipAddresses[i].trim()
+                        withCredentials([usernamePassword(credentialsId: ${ipAddress}, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        // script to SSH copy id to the remote server
                         sh """
-                        chmod +x script.sh
-                        ./script.sh ${ipArgs}
+                        ./script.sh ${USERNAME} ${PASSWORD} ${ipAddress}
                         """
+                        }
+                    }
                 }
             }
         }
