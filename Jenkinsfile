@@ -9,21 +9,16 @@ pipeline {
         stage('Create Inventory') {
             steps {
                 withCredentials([usernamePassword(credentialsId: '172.17.0.3', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    script {
-                    pwd 
-                    whoami
-                    ls
-                    // Split the comma-separated list of IPs into an array
-                    def ipList = params.IPs.split(',')
+                   def ipList = params.IPs.split(',')
 
-                    // Create a dynamic inventory file
-                    def inventoryContent = "[targets]\n"
-                    ipList.each { ip ->
-                        inventoryContent += "${ip} ansible_connection=ssh ansible_ssh_user=${USERNAME} ansible_ssh_pass=${PASSWORD}\n"
-                    }
-                    
-                    writeFile file: 'dynamic_inventory', text: inventoryContent
-                }
+                        // Join the IP list into a space-separated string to pass as arguments
+                        def ipArgs = ipList.join(' ')
+
+                        // Run the shell script with the IP addresses as input arguments
+                        sh """
+                        chmod +x script.sh
+                        ./script.sh ${ipArgs}
+                        """
                 }
             }
         }
