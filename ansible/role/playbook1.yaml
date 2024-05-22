@@ -5,7 +5,7 @@
   gather_facts: no
   
   tasks:
-    - name: "Install common software packages"
+    - name: Install common software packages
       become: true
       yum:
         name:
