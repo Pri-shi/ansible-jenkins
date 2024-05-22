@@ -15,13 +15,13 @@ ip=$3
 echo $ssh_key_path
 
 echo "STARTING ssh-keygen "
-//ssh-keygen -t rsa -f $ssh_key_path -N ''
+#ssh-keygen -t rsa -f $ssh_key_path -N ''
 ssh-keygen -t rsa -N ''
 echo "keygen COMPLETED"
 
 echo "Copying SSH key to $3..."
-//sshpass -p $2 ssh-copy-id -i $ssh_key_pub_path $1@$3
-sshpass -p $2 ssh-copy-id $1@$3
+#sshpass -p $2 ssh-copy-id -i $ssh_key_pub_path $1@$3
+sshpass -p $2 ssh-copy-id -i ~/.ssh/id_rsa.pub $1@$3
 
 echo "COPYING SSHID COMPLETED"
 
