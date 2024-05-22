@@ -23,5 +23,5 @@ cd ~/.ssh
 echo "pwd" pwd
 echo "Copying SSH key to $3..."
 echo "echo: ssh-copy-id -i $ssh_key_pub_path  $2@$3"
-sshpass $2 | ssh-copy-id -i "$ssh_key_pub_path" "$2@$3"
+sshpass $2 | ssh-copy-id -i $ssh_key_pub_path $2@$3
 
