@@ -6,6 +6,22 @@ pipeline {
     }
 
     stages {
+        stage('Dynamic Inventory') {
+            steps{
+                script{
+                    // Split the comma-separated list of IPs into an array
+                    def ipList = params.IPs.split(',')
+
+                    // Create a dynamic inventory file
+                    def inventoryContent = "[targets]\n"
+                    ipList.each { ip ->
+                        inventoryContent += "${ip} \n"
+                    }
+                    
+                    writeFile file: 'dynamic_inventory', text: inventoryContent
+                }
+            }
+        }
         stage('SSH') {
             steps {
                 script {
@@ -25,22 +41,7 @@ pipeline {
                 }
             }
         }
-        stage('Dynamic Inventory') {
-            steps{
-                script{
-                    // Split the comma-separated list of IPs into an array
-                    def ipList = params.IPs.split(',')
-
-                    // Create a dynamic inventory file
-                    def inventoryContent = "[targets]\n"
-                    ipList.each { ip ->
-                        inventoryContent += "${ip} \n"
-                    }
-                    
-                    writeFile file: 'dynamic_inventory', text: inventoryContent
-                }
-            }
-        }
+        
         stage('Run Ansible Playbook') {
             steps {
                 script {
