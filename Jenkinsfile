@@ -31,7 +31,7 @@ pipeline {
                     chmod +x script2.sh
                     ''' 
                     sh ''' 
-                    script2.sh ${ipList}
+                    ./script2.sh ${ipList}
                     '''
                     for (int i = 0; i < ipList.size(); i++) {
                         def ipAddress = ipList[i].trim()
