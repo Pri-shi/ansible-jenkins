@@ -2,7 +2,7 @@
 #!/bin/bash
 
 
-ssh_keypath='/var/jenkins_home/.ssh/id_rsa'
+ssh_keypath='/var/jenkins_home/.ssh'
 ssh_key_path='~/.ssh/id_rsa'
 echo $ssh_key_path
 
@@ -17,7 +17,7 @@ echo $ssh_key_path
 #         echo "keygen COMPLETED"
 # fi
 
-
+rm -rf "$ssh_keypath/*"
 
 options=""
 for ip in $@; do
@@ -25,5 +25,5 @@ for ip in $@; do
 done
 
 # Run ssh-keygen command
-echo ssh-keygen -t rsa -N '' ${options} -f "${ssh_keypath}"
-ssh-keygen -t rsa -N '' $options -f "$ssh_keypath"
+echo ssh-keygen -t rsa -N '' ${options} -f "${ssh_keypath}/id_rsa"
+ssh-keygen -t rsa -N '' $options -f "$ssh_keypath/id_rsa"
