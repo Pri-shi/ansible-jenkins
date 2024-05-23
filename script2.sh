@@ -17,7 +17,7 @@ echo $ssh_key_path
 #         echo "keygen COMPLETED"
 # fi
 echo rm -rf "${ssh_keypath}/*"
-rm -rf "${ssh_keypath}/*"
+rm -rf ${ssh_keypath}/*
 
 options=""
 for ip in $@; do
