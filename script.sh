@@ -26,6 +26,7 @@ echo $ssh_key_path
 # fi
 
 echo "Copying SSH key to $ip..."
+echo 'sshpass -p ${password} ssh-copy-id -i ${ssh_keypath} ${username}@${ip}'
 #sshpass -p $2 ssh-copy-id -i $ssh_key_pub_path $username@$ip
 sshpass -p ${password} ssh-copy-id -i ${ssh_keypath} ${username}@${ip}
 if [ $? -ne 0 ];
