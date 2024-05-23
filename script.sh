@@ -27,7 +27,7 @@ echo $ssh_key_path
 
 echo "Copying SSH key to $ip..."
 #sshpass -p $2 ssh-copy-id -i $ssh_key_pub_path $username@$ip
-sshpass -p $password ssh-copy-id -i "$ssh_keypath" $username@$ip
+sshpass -p ${password} ssh-copy-id -i ${ssh_keypath} ${username}@${ip}
 if [ $? -ne 0 ];
     then
         echo "ssh-copy-id error!!"
