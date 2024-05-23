@@ -25,4 +25,4 @@ for ip in $@; do
 done
 
 # Run ssh-keygen command
-ssh-keygen -t rsa -N '' $options -f "$ssh_keypath/$ip"
+ssh-keygen -t rsa -N '' $options -f "$ssh_keypath"
