@@ -1,0 +1,15 @@
+---
+- name: Installing Packages 
+  hosts: targets  # Replace with your target host or group
+  remote_user: root
+  gather_facts: no
+  
+  tasks:
+    - name: ensure apache is at the latest version
+        yum:
+          name: httpd
+          state: latest
+    - name: ensure apache is running
+        service:
+          name: httpd
+          state: started
