@@ -28,6 +28,10 @@ pipeline {
                      def ipList = params.IPs.split(',')
                     sh '''
                     chmod +x script.sh
+                    chmod +x script2.sh
+                    ''' 
+                    sh ''' 
+                    script2.sh ${ipList}
                     '''
                     for (int i = 0; i < ipList.size(); i++) {
                         def ipAddress = ipList[i].trim()
