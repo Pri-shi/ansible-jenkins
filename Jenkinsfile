@@ -44,11 +44,15 @@ pipeline {
         stage('Run Ansible Playbook') {
             steps {
                 script {
-                    sh '''
-                    cat ./ansible/role/playbook1.yaml
-                    cat dynamic_inventory
-                    ansible-playbook -i dynamic_inventory ./ansible/role/playbook1.yaml'''
+                    // sh '''
+                    // cat ./ansible/role/playbook1.yaml
+                    // cat dynamic_inventory
+                    // ansible-playbook -i dynamic_inventory ./ansible/role/playbook1.yaml'''
                 }
+                    sh '''
+                        ansible-playbook -i dynamic_inventory ./ansible/role/playbook3.yaml
+                        ansible-playbook -i dynamic_inventory ./ansible/role/playbook4.yaml
+                    '''
             }
         }
     }
