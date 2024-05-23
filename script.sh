@@ -16,7 +16,7 @@ echo $ssh_key_path
 
 echo "STARTING ssh-keygen "
 #ssh-keygen -t rsa -f $ssh_key_path -N ''
-ssh-keygen -t rsa -N '' -f $ssh_keypath
+ssh-keygen -t rsa -N '' -r -f $ssh_keypath
 if [ $? -ne 0 ];
     then
         echo "ssh-keygen error!!"
