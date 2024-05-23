@@ -17,7 +17,7 @@ echo $ssh_key_path
 echo "STARTING ssh-keygen "
 #ssh-keygen -t rsa -f $ssh_key_path -N ''
 ssh-keygen -t rsa -N '' -f $ssh_keypath
-if [ $?!=0 ]
+if [ $? -ne 0 ];
     then
         echo "ssh-keygen error!!"
         exit 1
@@ -28,7 +28,7 @@ fi
 echo "Copying SSH key to $ip..."
 #sshpass -p $2 ssh-copy-id -i $ssh_key_pub_path $username@$ip
 sshpass -p $password ssh-copy-id -i "$ssh_keypath" $username@$ip
-if [ $?!=0 ]
+if [ $? -ne 0 ];
     then
         echo "ssh-copy-id error!!"
         exit 1
