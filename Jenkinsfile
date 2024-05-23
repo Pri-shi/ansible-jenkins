@@ -18,7 +18,7 @@ pipeline {
                         withCredentials([usernamePassword(credentialsId: "${ipAddress}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         // script to SSH copy id to the remote server
                         sh """
-                        ./script.sh ${USERNAME} ${PASSWORD} '172.17.0.4'
+                        ./script.sh ${USERNAME} ${PASSWORD} ${ipAddress}
                         """
                         }
                     }
