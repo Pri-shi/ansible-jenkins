@@ -16,12 +16,12 @@ echo $ssh_key_path
 #     else
 #         echo "keygen COMPLETED"
 # fi
-
-rm -rf "$ssh_keypath/*"
+echo rm -rf "${ssh_keypath}/*"
+rm -rf "${ssh_keypath}/*"
 
 options=""
 for ip in $@; do
-    options="$options -r $ip"
+    options="${options} -r ${ip}"
 done
 
 # Run ssh-keygen command
